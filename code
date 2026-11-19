@@ -1,0 +1,32 @@
+import sys
+import math
+
+def solve_discrete_log(g, h, q):
+    m = math.isqrt(q) + 1
+    
+    # Baby steps
+    table = {}
+    baby = 1
+    for j in range(m):
+        if baby not in table:
+            table[baby] = j
+        baby = (baby * g) % q
+        
+    # Giant steps
+    c = pow(g, -m, q)
+    giant = h
+    for i in range(m):
+        if giant in table:
+            print(i * m + table[giant])
+            return
+        giant = (giant * c) % q
+
+# Зчитуємо всі дані з вхідного потоку через sys.stdin.read().split()
+input_data = sys.stdin.read().split()
+
+if len(input_data) >= 3:
+    g = int(input_data[0])
+    h = int(input_data[1])
+    q = int(input_data[2])
+    
+    solve_discrete_log(g, h, q)
