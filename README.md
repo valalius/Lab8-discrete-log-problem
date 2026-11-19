@@ -1,1 +1,1 @@
-Захист даних Лабораторна робота 7 Discrete Log Problem
+Захист даних Лабораторна робота 8 Discrete Log Problem
